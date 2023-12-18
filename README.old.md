@@ -1,2 +1,0 @@
-# spellingbee
-Spelling Bee clone
