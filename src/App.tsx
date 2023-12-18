@@ -1,10 +1,18 @@
-import "./App.css";
-import { Title } from "./styles.js";
+import {
+  Container,
+  Title,
+  RankContainer,
+  FoundWordContainer,
+  GameMapContainer,
+} from "./styles.js";
 function App() {
   return (
-    <div className="App">
+    <Container>
       <Title>SpellingBee</Title>
-    </div>
+      <RankContainer>Rank - Beginner</RankContainer>
+      <FoundWordContainer>Found Words List</FoundWordContainer>
+      <GameMapContainer>GameMapContainer</GameMapContainer>
+    </Container>
   );
 }
 
