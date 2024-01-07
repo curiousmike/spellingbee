@@ -8,7 +8,7 @@ import {
 function App() {
   return (
     <Container>
-      <Title>SpellingBee</Title>
+      <Title>SpellingBee Coustier Edition</Title>
       <RankContainer>Rank - Beginner</RankContainer>
       <FoundWordContainer>Found Words List</FoundWordContainer>
       <GameMapContainer>GameMapContainer</GameMapContainer>
