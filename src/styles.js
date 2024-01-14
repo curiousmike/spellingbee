@@ -57,3 +57,14 @@ export const GameMapContainer = styled.div`
     width: 50%;
   }
 `;
+
+export const TodaysDate = styled.div`
+  padding-left: 8px;
+  font-family: "Libre Franklin", sans-serif;
+`;
+
+export const ByLine = styled.div`
+  padding-left: 8px;
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 16px;
+`;
