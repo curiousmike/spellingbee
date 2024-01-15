@@ -5,6 +5,7 @@ export const Container = styled.div`
   margin: auto;
   height: 100vh;
   max-width: 1024px;
+  background: black;
 `;
 export const Title = styled.div`
   background: blue;
