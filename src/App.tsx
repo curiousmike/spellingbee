@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Container,
   Title,
@@ -9,10 +10,22 @@ import {
   TodaysDate,
   ByLine,
 } from "./styles.js";
-
+import { Solver } from "./utils/solver";
 import { getFormattedTodaysDate } from "./utils/utils";
+
+const MinWordLength = 4;
+
 function App() {
+  const [wordPermutations, setWordPermutations] = useState<string[]>([]);
+  const rootWord = "animals"; // 7 letter words
+
   const todaysDate = getFormattedTodaysDate();
+  if (!wordPermutations.length) {
+    const possibleWords = Solver(rootWord, MinWordLength);
+
+    setWordPermutations(possibleWords);
+    console.log("result = ", possibleWords);
+  }
   return (
     <Container>
       <Title>
