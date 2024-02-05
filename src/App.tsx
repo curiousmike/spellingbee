@@ -5,23 +5,23 @@ import {
   RankAndFoundWordWrapper,
   RankContainer,
   FoundWordContainer,
-  GameMapContainer,
   MainGameWrapper,
   TodaysDate,
   ByLine,
 } from "./styles.js";
 import { Solver } from "./utils/solver";
 import { getFormattedTodaysDate } from "./utils/utils";
-
+import { GameMap } from "./components/gameMap";
 const MinWordLength = 4;
 
 function App() {
   const [wordPermutations, setWordPermutations] = useState<string[]>([]);
-  const rootWord = "animals"; // 7 letter words
+  const rootWord = "nicatey"; // tenacity, acacia, accent
+  const coreLetter = "a";
 
   const todaysDate = getFormattedTodaysDate();
   if (!wordPermutations.length) {
-    const possibleWords = Solver(rootWord, MinWordLength);
+    const possibleWords = Solver(rootWord, coreLetter, MinWordLength);
 
     setWordPermutations(possibleWords);
     console.log("result = ", possibleWords);
@@ -38,7 +38,7 @@ function App() {
           <RankContainer>Rank - Beginner</RankContainer>
           <FoundWordContainer>Found Words List</FoundWordContainer>
         </RankAndFoundWordWrapper>
-        <GameMapContainer>GameMapContainer</GameMapContainer>
+        <GameMap letters={rootWord} coreLetter={coreLetter} />
       </MainGameWrapper>
     </Container>
   );

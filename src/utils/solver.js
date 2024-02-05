@@ -1,53 +1,44 @@
 import { globalWordList } from "./globalWordList.js";
 
-export function Solver(letters, minWordLength) {
+export function Solver(letters, coreLetter, minWordLength) {
   let fixedLetters = letters.toLowerCase().replace(/[^a-z]/g, ""); // only allow a-z
-  console.log("minWordLength = ", minWordLength);
-  return generateWordCombos(fixedLetters, minWordLength);
+  return generateWordCombos(fixedLetters, coreLetter, minWordLength);
 }
-
-function resetDictionaryArray(dict) {
-  for (let letter of theAlphabet) {
-    dict[letter] = 0;
-  }
-}
-
-function buildWordLetterCounts(word, dict) {
-  for (let letter of word) {
-    dict[letter]++;
-  }
-}
-
-const theAlphabet = "abcdefghijklmnopqrstuvwxyz";
-
-function generateWordCombos(letters, minWordLength) {
-  //set letter counts to 0
+// words must include core letter ( center letter)
+// words must contain at least 4 letters
+// letters can be used more than once
+// four letter words are worth 1 point each
+// longer words earn 1 point per letter - 6-letter word = 6pts
+// Pangram -each puzzle contains one pangram - uses every letter at least once. worth 7 addtl points
+// Bingo - all 7 letters start at least one word
+// Perfect Pangram - uses each letter only once
+// GN4L - Genius with no 4 letter words
+// GN4L OTN -
+// QB - Queen Bee - max score in puzzle achieved
+//
+function generateWordCombos(letters, coreLetter, minWordLength) {
   let foundWords = [];
-  var theWordLetterCounts = [];
-  resetDictionaryArray(theWordLetterCounts); // assume there are 0 of each letter
-  buildWordLetterCounts(letters, theWordLetterCounts); // how many of each letter are there
 
-  var bValidWord = true;
-  var currentLetterCounts = [];
   for (let word of globalWordList) {
-    bValidWord = true;
-    //reset current word counts
-    resetDictionaryArray(currentLetterCounts);
+    let bValidWord = true;
 
-    for (let character of word) {
-      currentLetterCounts[character]++;
-    }
-
-    for (let letter of theAlphabet) {
-      if (currentLetterCounts[letter] > 0) {
-        if (theWordLetterCounts[letter] >= currentLetterCounts[letter]) {
-          bValidWord = true;
-        } else {
-          bValidWord = false;
-          break;
-        }
+    let coreLetterFound = false;
+    // Verify the letters in our test word only use letters in our list
+    for (let index = 0; index < word.length; index++) {
+      const letter = word[index];
+      if (!letters.includes(letter)) {
+        bValidWord = false;
+        break;
+      }
+      if (coreLetter && letter === coreLetter) {
+        coreLetterFound = true;
       }
     }
+    if (coreLetter && !coreLetterFound) {
+      bValidWord = false;
+    }
+
+    // If minimum length enforced, verify
     if (bValidWord) {
       if (minWordLength) {
         if (word.length >= minWordLength) {

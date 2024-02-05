@@ -49,15 +49,6 @@ export const FoundWordContainer = styled.div`
   color: white;
   height: 50%;
 `;
-export const GameMapContainer = styled.div`
-  background: gray;
-  color: white;
-  height: 100%;
-  width: 100%;
-  @media (min-width: 576px) {
-    width: 50%;
-  }
-`;
 
 export const TodaysDate = styled.div`
   padding-left: 8px;
