@@ -1,13 +1,21 @@
-import { GameMapContainer } from "./styles";
+import { OutsideLetterContainer, GameMapContainer } from "./styles";
+import { LetterContainer } from "./letterContainer";
 type GameMapProps = {
   letters: string;
   coreLetter: string;
 };
 
 export function GameMap({ letters, coreLetter }: GameMapProps) {
+  const topLetters = [letters[0], letters[1], letters[2]];
+  const middleLetter = [letters[3]];
+  const bottomLetters = [letters[4], letters[5], letters[6]];
   return (
     <GameMapContainer>
-      <div>{letters}</div> <div> {coreLetter}</div>
+      <OutsideLetterContainer>
+        <LetterContainer letters={topLetters} />
+        <LetterContainer letters={middleLetter} />
+        <LetterContainer letters={bottomLetters} />
+      </OutsideLetterContainer>
     </GameMapContainer>
   );
 }
