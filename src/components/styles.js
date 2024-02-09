@@ -13,14 +13,15 @@ export const OutsideLetterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 8px;
 `;
 export const LetterContainerDiv = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: space-around;
 `;
 
 export const NormalLetter = styled.div`
   font-size: 5vw;
   font-weight: 600;
+  color: black;
 `;

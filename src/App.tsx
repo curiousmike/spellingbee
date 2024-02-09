@@ -36,9 +36,9 @@ function App() {
       <MainGameWrapper>
         <RankAndFoundWordWrapper>
           <RankContainer>Rank - Beginner</RankContainer>
-          <FoundWordContainer>Found Words List</FoundWordContainer>
+          <FoundWordContainer>Found Words List </FoundWordContainer>
         </RankAndFoundWordWrapper>
-        <GameMap letters={rootWord} coreLetter={coreLetter} />
+        <GameMap letters={rootWord} />
       </MainGameWrapper>
     </Container>
   );
