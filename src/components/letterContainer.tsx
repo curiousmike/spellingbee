@@ -1,4 +1,5 @@
 import { LetterContainerDiv, SingleLetter } from "./styles";
+
 type GameMapProps = {
   letters: string[];
 };
