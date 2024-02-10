@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as DESIGN from '../utils/styleConstants.js'
 
 export const GameMapContainer = styled.div`
   background: gray;
@@ -13,7 +14,7 @@ export const OutsideLetterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 8px;
+  margin-top: ${DESIGN.MARGIN_MEDIUM};
 `;
 export const LetterContainerDiv = styled.div`
   display: flex;
@@ -21,7 +22,6 @@ export const LetterContainerDiv = styled.div`
 `;
 
 export const SingleLetter = styled.div`
-  font-size: 5vw;
-  font-weight: 600;
-  color: black;
+  font-size: ${DESIGN.FONT_SIZE_LARGE};
+  font-weight: ${DESIGN.FONT_WEIGHT_HEAVY};
 `;
