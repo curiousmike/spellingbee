@@ -20,7 +20,7 @@ export const LetterContainerDiv = styled.div`
   flex-direction: row;
 `;
 
-export const NormalLetter = styled.div`
+export const SingleLetter = styled.div`
   font-size: 5vw;
   font-weight: 600;
   color: black;
