@@ -10,6 +10,7 @@ export function GameMap({ letters }: GameMapProps) {
   const bottomLetters = [letters[4], letters[5], letters[6]];
   return (
     <GameMapContainer>
+      <input defaultValue={"Type or click"} />
       <OutsideLetterContainer>
         <LetterContainer letters={topLetters} />
         <LetterContainer letters={middleLetter} />
