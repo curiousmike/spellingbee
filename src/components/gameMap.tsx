@@ -1,5 +1,6 @@
 import { OutsideLetterContainer, GameMapContainer } from "./styles";
 import { LetterContainer } from "./letterContainer";
+import { InputArea } from "./inputArea";
 type GameMapProps = {
   letters: string;
 };
@@ -10,7 +11,7 @@ export function GameMap({ letters }: GameMapProps) {
   const bottomLetters = [letters[4], letters[5], letters[6]];
   return (
     <GameMapContainer>
-      <input defaultValue={"Type or click"} />
+      <InputArea />
       <OutsideLetterContainer>
         <LetterContainer letters={topLetters} />
         <LetterContainer letters={middleLetter} />
