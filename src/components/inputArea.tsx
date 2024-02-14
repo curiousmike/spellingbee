@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SingleInputCharacter, BlinkingCursor } from "./styles";
+import { GlobalContext } from "../providers/GlobalProvider";
 
 //
 // This component needs to color the input letters based on
@@ -10,10 +11,13 @@ import { SingleInputCharacter, BlinkingCursor } from "./styles";
 // Only allow up to 20 letter words
 const maxLength = 20;
 export function InputArea() {
+  const { currentWordGuess, setCurrentWordGuess }: any =
+    useContext(GlobalContext);
   const [theInput, updateInput] = useState<string>("word");
 
   function handleKeyDown(e: KeyboardEvent) {
     if (e.key === "Enter") {
+      setCurrentWordGuess(theInput);
       return;
     }
     if (e.key === "Backspace") {
@@ -45,13 +49,12 @@ export function InputArea() {
 
   const getCharacters = () => {
     const nodes: any = [];
-    chars.forEach((c: any) => {
-      nodes.push(<SingleInputCharacter>{c}</SingleInputCharacter>);
+    chars.forEach((c: any, i: number) => {
+      nodes.push(<SingleInputCharacter key={i}>{c}</SingleInputCharacter>);
     });
     return <BlinkingCursor>{nodes}</BlinkingCursor>;
   };
 
   const chars = [...theInput];
-
   return getCharacters();
 }

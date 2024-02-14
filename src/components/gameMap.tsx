@@ -1,11 +1,11 @@
+import { useContext } from "react";
 import { OutsideLetterContainer, GameMapContainer } from "./styles";
 import { LetterContainer } from "./letterContainer";
 import { InputArea } from "./inputArea";
-type GameMapProps = {
-  letters: string;
-};
+import { GlobalContext } from "../providers/GlobalProvider";
 
-export function GameMap({ letters }: GameMapProps) {
+export function GameMap() {
+  const { letters }: any = useContext(GlobalContext);
   const topLetters = [letters[0], letters[1], letters[2]];
   const middleLetter = [letters[3]];
   const bottomLetters = [letters[4], letters[5], letters[6]];
