@@ -1,5 +1,5 @@
 import { LetterContainerDiv, SingleLetter } from "./styles";
-import * as DESIGN from '../utils/styleConstants.js'
+import * as DESIGN from "../utils/styleConstants.js";
 
 type GameMapProps = {
   letters: string[];
@@ -8,7 +8,7 @@ type GameMapProps = {
 export function LetterContainer({ letters }: GameMapProps) {
   const hexagon = (letter: string, isCenter: boolean) => (
     <svg
-      style={{ margin: DESIGN.MARGIN_LEFT_RIGHT_SMALL} }
+      style={{ margin: DESIGN.MARGIN_LEFT_RIGHT_SMALL }}
       height="120"
       width="120"
       xmlns="http://www.w3.org/2000/svg"

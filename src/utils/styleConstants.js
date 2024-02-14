@@ -12,3 +12,4 @@ export const COLOR_WHITE = "white";
 export const COLOR_YELLOW = "yellow";
 export const COLOR_GRAY = "#e6e6e6";
 export const COLOR_DARKGRAY = "gray";
+export const COLOR_MIDGRAY = "#A9A9A9";

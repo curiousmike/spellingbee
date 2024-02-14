@@ -18,7 +18,7 @@ export function Solver(letters, coreLetter, minWordLength) {
 //
 function generateWordCombos(letters, coreLetter, minWordLength) {
   let foundWords = [];
-
+  const fullLetters = letters + coreLetter;
   for (let word of globalWordList) {
     let bValidWord = true;
 
@@ -26,7 +26,7 @@ function generateWordCombos(letters, coreLetter, minWordLength) {
     // Verify the letters in our test word only use letters in our list
     for (let index = 0; index < word.length; index++) {
       const letter = word[index];
-      if (!letters.includes(letter)) {
+      if (!fullLetters.includes(letter)) {
         bValidWord = false;
         break;
       }
