@@ -1,3 +1,4 @@
+[<img src="https://github.com/curiousmike/spellingbee/blob/main/public/spellingbee.png" width="350"/>]
 # Areas I had to work thru
 - Learning how to use the CSS polygon to draw the hexagon
 - Creating my own text input
