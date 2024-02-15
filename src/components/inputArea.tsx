@@ -44,6 +44,9 @@ export function InputArea() {
       updateInput(updatedInput);
       return;
     }
+
+    if (e.key.length > 1) return; // 'Shift' 'F12'
+
     var pattern = new RegExp(/^[a-zA-Z]/); //acceptable chars
     if (!pattern.test(e.key)) return false;
 
