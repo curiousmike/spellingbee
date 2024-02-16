@@ -6,8 +6,14 @@ import { WordResult } from "./wordResult";
 import { GlobalContext } from "../providers/GlobalProvider";
 
 export function GameMap() {
-  const { letters, coreLetter, currentWordGuess }: any =
+  const { letters, coreLetter, currentWordGuess, setInFocus }: any =
     useContext(GlobalContext);
+
+  // function checkDocumentFocus() {
+  //   setInFocus(document.hasFocus());
+  // }
+  // setInterval(checkDocumentFocus, 300);
+  // setInFocus(true);
   if (!letters) return <></>;
   const topLetters = [letters[0], letters[1], letters[2]];
   const middleLetter = coreLetter;

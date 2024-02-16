@@ -11,11 +11,14 @@ import { MinWordLength, MaxWordLength } from "../utils/constants";
 //
 export function InputArea() {
   const {
+    inFocus,
     isInvalidWord,
     letters,
     coreLetter,
     currentWordGuess,
+    wordsFound,
     wordPermutations,
+    setWordsFound,
     setCurrentWordGuess,
     setIsInvalidWord,
   }: any = useContext(GlobalContext);
@@ -27,15 +30,31 @@ export function InputArea() {
       theInput.length >= MinWordLength &&
       theInput.length < MaxWordLength;
     const wordExistsInList = wordPermutations.includes(theInput);
-    return simpleChecks && wordExistsInList;
+    let wordExistsInFoundWords = false;
+    wordsFound.forEach((word: any) => {
+      if (word.word === theInput) {
+        wordExistsInFoundWords = true;
+        console.log("already exists");
+      }
+    });
+    return simpleChecks && wordExistsInList && !wordExistsInFoundWords;
   };
 
   function handleKeyDown(e: KeyboardEvent) {
+    setIsInvalidWord(null);
+
     if (e.key === "Enter") {
       setCurrentWordGuess(theInput);
       if (checkWordValidity()) {
-        console.log("add word - ", theInput);
-      } else console.log("Invalid word!");
+        const updatedWordsFound = [...wordsFound];
+        const newWord = { word: theInput, points: 1 };
+        updatedWordsFound.push(newWord);
+        setWordsFound(updatedWordsFound);
+        updateInput("");
+      } else {
+        setIsInvalidWord(theInput);
+        setTimeout(() => setIsInvalidWord(false), 1000);
+      }
       return;
     }
     if (e.key === "Backspace") {
@@ -50,8 +69,7 @@ export function InputArea() {
     var pattern = new RegExp(/^[a-zA-Z]/); //acceptable chars
     if (!pattern.test(e.key)) return false;
 
-    const invalidCharExists = !letters.includes(e.key) && e.key !== coreLetter;
-    setIsInvalidWord(invalidCharExists);
+    // const invalidCharExists = !letters.includes(e.key) && e.key !== coreLetter;
 
     let updatedInput = theInput || "";
     updatedInput = updatedInput + e.key;
@@ -92,8 +110,11 @@ export function InputArea() {
         </SingleInputCharacter>
       );
     });
-    return <BlinkingCursor>{nodes}</BlinkingCursor>;
+    return inFocus ? (
+      <BlinkingCursor>{nodes}</BlinkingCursor>
+    ) : (
+      <div> {nodes}</div>
+    );
   };
-
   return getCharacterNodes();
 }

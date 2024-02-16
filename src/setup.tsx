@@ -13,8 +13,8 @@ export function Setup() {
       setLetters(lettersToUse);
       setCoreLetter(core);
       const possibleWords = Solver(lettersToUse, core, MinWordLength);
+      console.log("possible = ", possibleWords);
       setWordPermutations(possibleWords);
-      console.log("posible = ", possibleWords);
     }
   });
   return <> </>;

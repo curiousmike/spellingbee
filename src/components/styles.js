@@ -26,12 +26,12 @@ export const BlinkingCursor = styled.span`
   }
 
   &:after {
-    animation: cursor-blink 1s steps(1) infinite;
+    animation: cursor-blink 0.5s steps(1) infinite;
     content: "";
     display: block;
     top: 0;
     width: 4px;
-    height: 30px;
+    height: ${DESIGN.FONT_SIZE_LARGE};
     margin-top: 6px;
     margin-left: 4px;
     background: ${DESIGN.COLOR_YELLOW};

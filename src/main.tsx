@@ -1,3 +1,4 @@
+import { useContext, useEffect } from "react";
 import {
   Container,
   Title,
@@ -10,12 +11,12 @@ import {
 } from "./styles.js";
 import { getFormattedTodaysDate } from "./utils/utils";
 import { GameMap } from "./components/gameMap";
+import { FoundWords } from "./components/foundWords";
 import { Setup } from "./setup";
 import GlobalProvider from "./providers/GlobalProvider";
 
 export function Main() {
   const todaysDate = getFormattedTodaysDate();
-
   return (
     <GlobalProvider>
       <Setup />
@@ -27,7 +28,9 @@ export function Main() {
         <MainGameWrapper>
           <RankAndFoundWordWrapper>
             <RankContainer>Rank - Beginner</RankContainer>
-            <FoundWordContainer>Found Words List </FoundWordContainer>
+            <FoundWordContainer>
+              <FoundWords />
+            </FoundWordContainer>
           </RankAndFoundWordWrapper>
           <GameMap />
         </MainGameWrapper>
