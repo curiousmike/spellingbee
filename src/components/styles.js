@@ -59,3 +59,9 @@ export const SingleLetter = styled.div`
   font-size: ${DESIGN.FONT_SIZE_LARGE};
   font-weight: ${DESIGN.FONT_WEIGHT_HEAVY};
 `;
+
+export const WordResultContainer = styled.div`
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: ${DESIGN.MARGIN_MEDIUM};
+`;

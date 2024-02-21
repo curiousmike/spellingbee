@@ -21,8 +21,21 @@ export function InputArea() {
     setWordsFound,
     setCurrentWordGuess,
     setIsInvalidWord,
+    setWordPoints,
   }: any = useContext(GlobalContext);
   const [theInput, updateInput] = useState<string>(currentWordGuess);
+
+  const isPangram = () => {
+    // did theInput use at least one of coreLetter and letters?
+    const allLetters = [coreLetter, ...letters];
+    let valid = true;
+    allLetters.forEach((letter: any) => {
+      if (!theInput.includes(letter)) {
+        valid = false;
+      }
+    });
+    return valid;
+  };
 
   const checkWordValidity = () => {
     const simpleChecks =
@@ -30,14 +43,28 @@ export function InputArea() {
       theInput.length >= MinWordLength &&
       theInput.length < MaxWordLength;
     const wordExistsInList = wordPermutations.includes(theInput);
+
     let wordExistsInFoundWords = false;
     wordsFound.forEach((word: any) => {
       if (word.word === theInput) {
         wordExistsInFoundWords = true;
-        console.log("already exists");
       }
     });
-    return simpleChecks && wordExistsInList && !wordExistsInFoundWords;
+
+    const valid = simpleChecks && wordExistsInList && !wordExistsInFoundWords;
+
+    if (!valid) return 0;
+
+    let points = 0;
+    if (theInput.length === MinWordLength) {
+      points = 1;
+    } else if (isPangram()) {
+      points = theInput.length + 7;
+    } else {
+      points = theInput.length;
+    }
+
+    return points;
   };
 
   function handleKeyDown(e: KeyboardEvent) {
@@ -45,11 +72,13 @@ export function InputArea() {
 
     if (e.key === "Enter") {
       setCurrentWordGuess(theInput);
-      if (checkWordValidity()) {
+      const points = checkWordValidity();
+      if (points) {
         const updatedWordsFound = [...wordsFound];
-        const newWord = { word: theInput, points: 1 };
+        const newWord = { word: theInput, points: points };
         updatedWordsFound.push(newWord);
         setWordsFound(updatedWordsFound);
+        setWordPoints(points);
         updateInput("");
       } else {
         setIsInvalidWord(theInput);
@@ -68,8 +97,6 @@ export function InputArea() {
 
     var pattern = new RegExp(/^[a-zA-Z]/); //acceptable chars
     if (!pattern.test(e.key)) return false;
-
-    // const invalidCharExists = !letters.includes(e.key) && e.key !== coreLetter;
 
     let updatedInput = theInput || "";
     updatedInput = updatedInput + e.key;
