@@ -6,13 +6,12 @@ import { WordResult } from "./wordResult";
 import { GlobalContext } from "../providers/GlobalProvider";
 
 export function GameMap() {
-  const { letters, coreLetter, currentWordGuess, setInFocus }: any =
-    useContext(GlobalContext);
+  const { letters, coreLetter, setInFocus }: any = useContext(GlobalContext);
 
-  // function checkDocumentFocus() {
-  //   setInFocus(document.hasFocus());
-  // }
-  // setInterval(checkDocumentFocus, 300);
+  function checkDocumentFocus() {
+    setInFocus(document.hasFocus());
+  }
+  setInterval(checkDocumentFocus, 300);
   // setInFocus(true);
   if (!letters) return <></>;
   const topLetters = [letters[0], letters[1], letters[2]];
@@ -20,7 +19,7 @@ export function GameMap() {
   const bottomLetters = [letters[3], letters[4], letters[5]];
   return (
     <GameMapContainer>
-      {currentWordGuess && <WordResult />}
+      <WordResult />
       <InputArea />
       <OutsideLetterContainer>
         <LetterContainer letters={topLetters} />

@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { GlobalContext } from "../providers/GlobalProvider";
-import { WordResultContainer } from "./styles";
+import { WordResultContainer, WordResultContainerEmpty } from "./styles";
 export function WordResult() {
   const { isInvalidWord, wordsFound, wordPoints }: any =
     useContext(GlobalContext);
@@ -24,6 +24,6 @@ export function WordResult() {
   ) : timeoutId ? (
     <WordResultContainer>Good ! {wordPoints}</WordResultContainer>
   ) : (
-    <></>
+    <WordResultContainerEmpty />
   );
 }

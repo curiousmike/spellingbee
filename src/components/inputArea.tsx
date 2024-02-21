@@ -1,5 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { SingleInputCharacter, BlinkingCursor } from "./styles";
+import {
+  SingleInputCharacter,
+  FocusedInputWithCursor,
+  NonFocusedInput,
+} from "./styles";
 import { GlobalContext } from "../providers/GlobalProvider";
 import * as DESIGN from "../utils/styleConstants";
 import { MinWordLength, MaxWordLength } from "../utils/constants";
@@ -16,8 +20,10 @@ export function InputArea() {
     letters,
     coreLetter,
     currentWordGuess,
+    pointsTotal,
     wordsFound,
     wordPermutations,
+    setPointsTotal,
     setWordsFound,
     setCurrentWordGuess,
     setIsInvalidWord,
@@ -40,6 +46,7 @@ export function InputArea() {
   const checkWordValidity = () => {
     const simpleChecks =
       !isInvalidWord &&
+      theInput &&
       theInput.length >= MinWordLength &&
       theInput.length < MaxWordLength;
     const wordExistsInList = wordPermutations.includes(theInput);
@@ -79,6 +86,7 @@ export function InputArea() {
         updatedWordsFound.push(newWord);
         setWordsFound(updatedWordsFound);
         setWordPoints(points);
+        setPointsTotal(pointsTotal + points);
         updateInput("");
       } else {
         setIsInvalidWord(theInput);
@@ -138,9 +146,9 @@ export function InputArea() {
       );
     });
     return inFocus ? (
-      <BlinkingCursor>{nodes}</BlinkingCursor>
+      <FocusedInputWithCursor>{nodes}</FocusedInputWithCursor>
     ) : (
-      <div> {nodes}</div>
+      <NonFocusedInput> {nodes}</NonFocusedInput>
     );
   };
   return getCharacterNodes();

@@ -14,8 +14,17 @@ export const GameMapContainer = styled.div`
   }
 `;
 
-export const BlinkingCursor = styled.span`
+export const NonFocusedInput = styled.span`
   display: flex;
+  min-height: ${DESIGN.MIN_HEIGHT_MEDIUM};
+  margin-top: ${DESIGN.MARGIN_MEDIUM};
+`;
+
+export const FocusedInputWithCursor = styled.span`
+  display: flex;
+  min-height: ${DESIGN.MIN_HEIGHT_MEDIUM};
+  margin-top: ${DESIGN.MARGIN_MEDIUM};
+
   @keyframes cursor-blink {
     0% {
       opacity: 0;
@@ -61,7 +70,15 @@ export const SingleLetter = styled.div`
 `;
 
 export const WordResultContainer = styled.div`
+  display: flex;
+  align-items: center;
+  min-height: ${DESIGN.MIN_HEIGHT_SMALL};
   border-radius: 25px;
   border: 2px solid black;
+  padding: ${DESIGN.MARGIN_MEDIUM};
+`;
+
+export const WordResultContainerEmpty = styled.div`
+  min-height: ${DESIGN.MIN_HEIGHT_SMALL};
   padding: ${DESIGN.MARGIN_MEDIUM};
 `;

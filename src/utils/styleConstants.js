@@ -1,3 +1,7 @@
+export const MIN_HEIGHT_MEDIUM = "64px";
+export const MIN_HEIGHT_SMALL = "32px";
+
+export const MARGIN_XXXL = "48px";
 export const MARGIN_MEDIUM = "8px";
 export const MARGIN_LEFT_RIGHT_SMALL = "0px 8px 0px 8px";
 export const PADDING_SMALL = "8px";
