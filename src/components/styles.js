@@ -82,3 +82,34 @@ export const WordResultContainerEmpty = styled.div`
   min-height: ${DESIGN.MIN_HEIGHT_SMALL};
   padding: ${DESIGN.MARGIN_MEDIUM};
 `;
+
+export const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${DESIGN.COLOR_DARKGRAY};
+  color: white;
+  height: 100%;
+  width: 100%;
+  @media (min-width: 576px) {
+    width: 50%;
+  }
+`;
+
+export const Spinner = styled.div`
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  `;

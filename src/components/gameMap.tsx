@@ -1,5 +1,10 @@
 import { useContext } from "react";
-import { OutsideLetterContainer, GameMapContainer } from "./styles";
+import {
+  OutsideLetterContainer,
+  GameMapContainer,
+  Spinner,
+  SpinnerContainer,
+} from "./styles";
 import { LetterContainer } from "./letterContainer";
 import { InputArea } from "./inputArea";
 import { WordResult } from "./wordResult";
@@ -13,7 +18,12 @@ export function GameMap() {
   }
   setInterval(checkDocumentFocus, 300);
 
-  if (!letters) return <></>;
+  if (!letters)
+    return (
+      <SpinnerContainer>
+        <Spinner />
+      </SpinnerContainer>
+    );
 
   const topLetters = [letters[0], letters[1], letters[2]];
   const middleLetter = coreLetter;

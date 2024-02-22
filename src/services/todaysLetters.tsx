@@ -1,6 +1,6 @@
 const goodEndPoint = "https://www.boredapi.com/api/activity";
 const badEndPoint = "https://httpstat.us/404";
-
+const simulateBackendResponseTime = 500;
 export async function getTodaysLetters() {
   // const response = await fetch(goodEndPoint);
   // if (!response.ok) {
@@ -9,6 +9,14 @@ export async function getTodaysLetters() {
   // const activity = await response.json();
   // return activity;
 
-  const letters = { letters: "nictey", coreLetter: "a" };
-  return letters;
+  return new Promise((resolve, reject) => {
+    if (true) {
+      setTimeout(
+        () => resolve({ letters: "nictey", coreLetter: "a" }),
+        simulateBackendResponseTime
+      );
+    } else {
+      reject("bad data");
+    }
+  });
 }
