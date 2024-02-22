@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import * as DESIGN from './utils/styleConstants.js'
+import * as DESIGN from "./utils/styleConstants.js";
 
 export const Container = styled.div`
   display: flex;
@@ -8,6 +8,7 @@ export const Container = styled.div`
   height: 100vh;
   max-width: 1024px;
   background: ${DESIGN.COLOR_BLACK};
+  overflow: hidden;
 `;
 export const Title = styled.div`
   background: ${DESIGN.COLOR_BLUE};

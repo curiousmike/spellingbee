@@ -12,8 +12,9 @@ export function GameMap() {
     setInFocus(document.hasFocus());
   }
   setInterval(checkDocumentFocus, 300);
-  // setInFocus(true);
+
   if (!letters) return <></>;
+
   const topLetters = [letters[0], letters[1], letters[2]];
   const middleLetter = coreLetter;
   const bottomLetters = [letters[3], letters[4], letters[5]];
