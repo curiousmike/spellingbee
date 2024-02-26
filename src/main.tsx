@@ -19,23 +19,35 @@ import { MinWordLength } from "./utils/constants.js";
 
 export function Main() {
   const [todaysDate, setTodaysDate] = useState<string | null>(null);
-  const { setLetters, setCoreLetter, setWordPermutations }: any =
-    useContext(GlobalContext);
+  const {
+    setLetters,
+    setCoreLetter,
+    setWordPermutations,
+    setInFocus,
+    setIsLoading,
+    setError,
+  }: any = useContext(GlobalContext);
 
   useEffect(() => {
+    setIsLoading(true);
     setTodaysDate(getFormattedTodaysDate());
+    function checkDocumentFocus() {
+      setInFocus(document.hasFocus());
+    }
+    setInterval(checkDocumentFocus, 300);
+
     getTodaysLetters()
       .then((result: any) => {
         setLetters(result.letters);
         setCoreLetter(result.coreLetter);
-        const possibleWords = Solver(
-          result.letters,
-          result.coreLetter,
-          MinWordLength
+        setWordPermutations(
+          Solver(result.letters, result.coreLetter, MinWordLength)
         );
-        setWordPermutations([...possibleWords]);
+        setIsLoading(false);
       })
-      .catch((err) => console.log("err =", err));
+      .catch((err) => {
+        setError(err);
+      });
   }, []);
 
   return (

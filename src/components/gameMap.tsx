@@ -3,7 +3,7 @@ import {
   OutsideLetterContainer,
   GameMapContainer,
   Spinner,
-  SpinnerContainer,
+  InformationContainer,
 } from "./styles";
 import { LetterContainer } from "./letterContainer";
 import { InputArea } from "./inputArea";
@@ -11,18 +11,12 @@ import { WordResult } from "./wordResult";
 import { GlobalContext } from "../providers/GlobalProvider";
 
 export function GameMap() {
-  const { letters, coreLetter, setInFocus }: any = useContext(GlobalContext);
+  const { isError, isLoading, letters, coreLetter }: any =
+    useContext(GlobalContext);
 
-  function checkDocumentFocus() {
-    setInFocus(document.hasFocus());
-  }
-  setInterval(checkDocumentFocus, 300);
-
-  if (!letters)
+  if (!letters || isLoading || isError)
     return (
-      <SpinnerContainer>
-        <Spinner />
-      </SpinnerContainer>
+      <InformationContainer>{isError || <Spinner />}</InformationContainer>
     );
 
   const topLetters = [letters[0], letters[1], letters[2]];

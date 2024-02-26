@@ -16,13 +16,17 @@ const GlobalProvider = ({ children }: any) => {
   const [wordsFound, setWordsFound] = useState<FoundWord[]>([]);
   const [wordPoints, setWordPoints] = useState(null);
   const [pointsTotal, setPointsTotal] = useState(0);
+  const [isError, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <GlobalContext.Provider
       value={{
         coreLetter,
         currentWordGuess,
+        isError,
         inFocus,
         isInvalidWord,
+        isLoading,
         letters,
         pointsTotal,
         wordsFound,
@@ -30,8 +34,10 @@ const GlobalProvider = ({ children }: any) => {
         wordPoints,
         setCoreLetter,
         setCurrentWordGuess,
+        setError,
         setInFocus,
         setIsInvalidWord,
+        setIsLoading,
         setLetters,
         setPointsTotal,
         setWordsFound,

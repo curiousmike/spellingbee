@@ -83,7 +83,7 @@ export const WordResultContainerEmpty = styled.div`
   padding: ${DESIGN.MARGIN_MEDIUM};
 `;
 
-export const SpinnerContainer = styled.div`
+export const InformationContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
