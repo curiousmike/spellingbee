@@ -72,15 +72,16 @@ export const SingleLetter = styled.div`
 export const WordResultContainer = styled.div`
   display: flex;
   align-items: center;
-  min-height: ${DESIGN.MIN_HEIGHT_SMALL};
-  border-radius: 25px;
-  border: 2px solid black;
-  padding: ${DESIGN.MARGIN_MEDIUM};
+  height: ${DESIGN.MIN_HEIGHT_MEDIUM};
+  margin-top: ${DESIGN.MARGIN_MEDIUM};
+  padding: 0px ${DESIGN.PADDING_MEDIUM} 0px ${DESIGN.PADDING_MEDIUM};
+  outline: solid 1px;
+  border-radius: 16px;
 `;
 
 export const WordResultContainerEmpty = styled.div`
-  min-height: ${DESIGN.MIN_HEIGHT_SMALL};
-  padding: ${DESIGN.MARGIN_MEDIUM};
+  margin-top: ${DESIGN.MARGIN_MEDIUM};
+  height: ${DESIGN.MIN_HEIGHT_MEDIUM};
 `;
 
 export const InformationContainer = styled.div`
@@ -113,3 +114,21 @@ export const Spinner = styled.div`
       transform: rotate(360deg);
   }
   `;
+
+export const FoundWordHeader = styled.div`
+  margin: ${DESIGN.MARGIN_MEDIUM};
+  font-family: "Libre Franklin", sans-serif;
+  font-size: ${DESIGN.FONT_SIZE_LARGE};
+`;
+
+export const FoundWordHeaderSeparater = styled.hr``;
+
+export const FoundWordContainer = styled.div`
+  max-width: 96px;
+  text-align: center;
+  margin: ${DESIGN.MARGIN_MEDIUM};
+  font-family: "Libre Franklin", sans-serif;
+  font-size: ${DESIGN.FONT_SIZE_XMEDIUM};
+  border-radius: 10px;
+  border: 1px solid ${DESIGN.COLOR_ALMOST_BLACK};
+`;
